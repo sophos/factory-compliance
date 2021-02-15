@@ -4,6 +4,12 @@
   connection: local
 
   tasks:
+
+  - name: Create any missing directory(ies) for sessions.properties 
+    ansible.builtin.file:
+      path: "{{ session_path | dirname }}"
+      state: directory
+      mode: '0755'
   
   - name: Ensure sessions.properties exists and is empty
     ansible.builtin.copy:
