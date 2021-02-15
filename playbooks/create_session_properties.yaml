@@ -10,7 +10,7 @@
       path: "{{ session_path | dirname }}"
       state: directory
       mode: '0755'
-    deletgate_to: localhost
+    delegate_to: localhost
     run_once: true
   
   - name: Ensure sessions.properties exists and is empty
