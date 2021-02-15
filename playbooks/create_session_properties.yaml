@@ -10,6 +10,8 @@
       path: "{{ session_path | dirname }}"
       state: directory
       mode: '0755'
+    deletgate_to: localhost
+    run_once: true
   
   - name: Ensure sessions.properties exists and is empty
     ansible.builtin.copy:
@@ -21,6 +23,7 @@
   - name: Set session_id
     ansible.builtin.set_fact: 
       session_id: "{{ 'session.' + ( inventory_hostname | replace('.', '_') ) + '.' }}"
+    delegate_to: localhost
   
   - name: Populate Session File
     ansible.builtin.blockinfile:
