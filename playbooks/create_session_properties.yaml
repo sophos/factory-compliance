@@ -7,6 +7,8 @@
 
   - debug:
       var: session_path
+
+  - debug:
       msg: "session_dir: {{ session_path | dirname }}"
 
   - name: Create any missing directory(ies) for sessions.properties 
