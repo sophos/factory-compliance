@@ -1,20 +1,9 @@
 ---
-- hosts: "{{ inventory_group }}"
+- hosts: all
   gather_facts: no
   connection: local
 
   tasks:
-
-  - debug:
-      var: session_path
-      msg: "session_dir: {{ session_path | dirname ||"
-
-  - name: Create any missing directory(ies) for sessions.properties 
-    ansible.builtin.file:
-      path: "{{ session_path | dirname }}"
-      state: directory
-    delegate_to: localhost
-    run_once: true
   
   - name: Ensure sessions.properties exists and is empty
     ansible.builtin.copy:
@@ -26,7 +15,6 @@
   - name: Set session_id
     ansible.builtin.set_fact: 
       session_id: "{{ 'session.' + ( inventory_hostname | replace('.', '_') ) + '.' }}"
-    delegate_to: localhost
   
   - name: Populate Session File
     ansible.builtin.blockinfile:
