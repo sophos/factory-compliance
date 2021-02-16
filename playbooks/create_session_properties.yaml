@@ -7,7 +7,7 @@
 
   - debug:
       var: session_path
-      msg: "session_dir: {{ session_path | dirname ||"
+      msg: "session_dir: {{ session_path | dirname }}"
 
   - name: Create any missing directory(ies) for sessions.properties 
     ansible.builtin.file:
