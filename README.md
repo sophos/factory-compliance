@@ -1,2 +1,3 @@
 # compliance-use-case
-Artifacts required by the Refactr Compliance Use Case
+
+Artifacts required by the Sophos Factory Compliance Use Case.
